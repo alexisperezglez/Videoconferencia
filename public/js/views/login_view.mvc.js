@@ -1,4 +1,16 @@
-window.login_view = Backbone.View.extend({
+(function() {
+  $V.LoginView = $V.baseView.extend({
+    tmpl: '#tmpl_login',
+    events: {},
+    afterInitialize: function () {
+      var self = this;
+      this.model = new $V.BaseViewModel();
+    },
+    afterRender: function () {
+    }
+  });
+}());
+/*window.login_view = Backbone.View.extend({
 
   events: {
     'submit .login_view_form': 'saveUser'
@@ -28,4 +40,4 @@ window.login_view = Backbone.View.extend({
     $(this.el).html(this.template());
     return this;
   }
-});
+});*/

@@ -1,0 +1,43 @@
+<script type="text/template" id="tmpl_login"> 
+  <div id="login_view">
+    {{ _.tmpl('#tmpl_login_signIn', {}) }}
+    {{ _.tmpl('#tmpl_login_signUp', {}) }}
+  </div>
+</script>
+
+<script type="text/template" id="tmpl_login_signIn">
+  <div id="login_signIn_view">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Iniciar sesión</h2>
+      </div>
+      <div class="panel-body">  
+        <form class="form-horizontal" role="form">
+          <div class="form-group ">
+            <label class="sr-only" for="username">Usuario</label>
+            <input type="text" class="form-control" id="username" placeholder="Usuario">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Contraseña">
+          </div>
+          <button type="submit" class="btn btn-default pull-right">Acceder</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl_login_signUp">
+  <div id="login_signUp_view">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Date de alta</h2>
+      </div>
+      <div class="panel-body">  
+        <p>Si aún no te has registrado:</p>
+        <button type="button" class="btn btn-default pull-right">Dar de alta</button>
+      </div>
+    </div>
+  </div>
+</script>
