@@ -1,0 +1,48 @@
+<script type="text/template" id="tmpl_signup">
+  <div id="page-content" class="container">
+    <div id="view_signup" class="container">
+      <h1>Date de alta</h1>
+      <h3><small>Rellene el siguiente formulario de alta</small></h3>
+      <div id="page-container" class="row">
+        <div id="main-container" class="col-md-9">
+          <div class="hidden" id="validationContainer">
+            <p class="bg-danger" id="validationMessage"></p>
+          </div>
+          {{ _.tmpl('#signupForm', {}) }}
+        </div>
+        <div id="side-container"class="col-md-3"></div>
+      <div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="signupForm">
+  <form class="form-horizontal" id="signUp-form" role="form">
+    <div class="form-group">
+      <label for="username-signup" class="col-lg-2 control-label">Usuario</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="username-signup" name="username" placeholder="Usuario">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email-signup" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="email" class="form-control" id="email-signup" name="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password-signup" class="col-lg-2 control-label">Contraseña</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="password-signup" name="password" placeholder="Contraseña">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-6">
+        <button type="submit" class="btn btn-default">Enviar</button>
+      </div>
+      <div class="col-lg-4">
+        <p class="text-info pull-right">Todos los campos son obligatorios</p>
+      </div>
+    </div>
+  </form>
+</script>

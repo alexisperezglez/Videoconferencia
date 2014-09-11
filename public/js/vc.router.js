@@ -1,12 +1,22 @@
 (function() {
   $V.AppRouter = Backbone.Router.extend({
     routes: {
-      "login": "defaultRoute"
+      'login': 'defaultRoute',
+      'home': 'defaultRoute',
+      'signup': 'signUp'
     },
 
 
     defaultRoute: function (actions) {
-      $.when($("#contenedor").html(_.tmpl('#tmpl_login'))).then($V.views.login = new $V.LoginView());
+      $.when(
+        $('#contenedor').html(_.tmpl('#tmpl_main'))
+      ).then(
+        $V.views.main = new $V.MainView()
+      );
+    },
+
+    signUp: function () {
+      $V.views.signup = new $V.SignUpView();
     }
   });
 }());

@@ -1,7 +1,25 @@
 <script type="text/template" id="tmpl_login"> 
-  <div id="login_view">
-    {{ _.tmpl('#tmpl_login_signIn', {}) }}
-    {{ _.tmpl('#tmpl_login_signUp', {}) }}
+  <header>
+    <h1>VideoConferencia</h1>
+  </header>
+  <div id="page-container" class="row">
+    <div id="main-container" class="col-md-9">
+      {{ _.tmpl('#tmpl_login_home', {}) }}
+    </div>
+    <div id="side-container"class="col-md-3">
+      {{ _.tmpl('#tmpl_login_signIn', {}) }}
+      {{ _.tmpl('#tmpl_login_signUp', {}) }}
+    </div>
+  <div>
+</script>
+
+<script type="text/template" id="tmpl_login_home">
+  <div id="home_view">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a volutpat ligula. Proin sed nisi tempor, porta felis quis, condimentum ante. Mauris consequat tempus libero ut tincidunt. Integer porttitor finibus lacus in venenatis. Ut sem augue, scelerisque scelerisque ligula et, dignissim lobortis erat. Vestibulum a sagittis dolor, sed hendrerit nibh. Morbi viverra lobortis ligula tempor eleifend. Proin nulla augue, dapibus sed ipsum a, ultrices auctor massa. Curabitur a viverra turpis. Nam nec metus justo. Aliquam euismod imperdiet risus.</p>
+
+    <p>Donec eros sem, porta vitae accumsan eget, dapibus pharetra mauris. Nullam tristique, odio ac porttitor commodo, dui neque faucibus nunc, ac blandit urna eros non ex. Nam mattis fermentum dolor sed pretium. Morbi nisl nulla, malesuada vel odio vitae, imperdiet aliquet libero. Morbi suscipit elit dolor, id laoreet ligula luctus vitae. Vivamus laoreet ligula id ultrices rhoncus. Sed accumsan cursus ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus maximus condimentum magna a pellentesque.</p>
+
+    <p>Vivamus rutrum hendrerit urna, quis mollis leo dictum sit amet. Phasellus et nulla felis. Morbi a placerat ligula, quis efficitur tellus. Curabitur fermentum enim non elit fermentum pretium nec in ligula. Duis placerat finibus blandit. Praesent id nisi et quam bibendum mollis et iaculis mauris. Duis at porttitor leo, quis scelerisque ex. Sed placerat placerat arcu et tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus vitae nulla imperdiet, eleifend velit non, sagittis est. Etiam nec nisi neque. Quisque consequat odio ut sodales maximus. Ut rhoncus, arcu vel malesuada elementum, turpis justo congue ipsum, vitae commodo enim massa id magna.</p>
   </div>
 </script>
 
@@ -12,14 +30,17 @@
         <h2 class="panel-title">Iniciar sesión</h2>
       </div>
       <div class="panel-body">  
-        <form class="form-horizontal" role="form">
+        <form id="login-form" class="form-horizontal" role="form">
           <div class="form-group ">
             <label class="sr-only" for="username">Usuario</label>
-            <input type="text" class="form-control" id="username" placeholder="Usuario">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
           </div>
           <div class="form-group">
             <label class="sr-only" for="password">Contraseña</label>
-            <input type="password" class="form-control" id="password" placeholder="Contraseña">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+          </div>
+          <div class="hidden" id="validationContainer">
+            <p class="bg-danger" id="validationMessage"></p>
           </div>
           <button type="submit" class="btn btn-default pull-right">Acceder</button>
         </form>
@@ -36,7 +57,7 @@
       </div>
       <div class="panel-body">  
         <p>Si aún no te has registrado:</p>
-        <button type="button" class="btn btn-default pull-right">Dar de alta</button>
+        <button id="signup-btn" data-link="#signup" type="button" class="btn btn-default pull-right">Dar de alta</button>
       </div>
     </div>
   </div>

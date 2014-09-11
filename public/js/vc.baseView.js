@@ -16,9 +16,10 @@
     navigate: function (ev) {
       $V.utils.navigate(ev);
     },
-    loadPage: function () {
+    loadPage: function (options) {
       var self = this;
       this.model.fetch({
+        beforeSend: options,
         success: function (model, resp) {
           if (_.isFunction(self.onSuccess)) {
             self.onSuccess();
@@ -29,11 +30,7 @@
         error: function (model, resp) {
           if (_.isFunction(self.onError)) {
             self.onError();
-          } else {
-            self.$el.html(_.c_message_error({
-              reloadButton: true
-            }));
-          }
+          } 
         }
       });
     },

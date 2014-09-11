@@ -4,7 +4,7 @@
   $V.utils.navigate = function (ev) {
     var url = $(ev.currentTarget).attr('data-link');
     ev.preventDefault();
-    $V.AppRouter.navigate(url, {trigger: true});
+    $V.app_router.navigate(url, {trigger: true});
   };
 
   $V.utils.mergeEvents = function (self) {

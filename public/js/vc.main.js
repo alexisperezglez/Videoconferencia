@@ -22,9 +22,6 @@ var $V, $, _, Backbone;
     images: {
       route: '../img/'
     },
-    maps: {
-      autoStart: false
-    },
     views: {}
   };
 
@@ -41,7 +38,8 @@ var $V, $, _, Backbone;
       '$V_baseView': 'vc.baseView',
       'main_view': 'views/main_view.mvc',
       'home_view': 'views/home_view.mvc',
-      'login_view': 'views/login_view.mvc'
+      'login_view': 'views/login_view.mvc',
+      'signup_view': 'views/signup_view.mvc'
     },
     shim: {
       'underscore': {
@@ -58,11 +56,11 @@ var $V, $, _, Backbone;
       'mixins': {
         deps: ['jquery', 'underscore']
       },
-      '$V_utils': {
-        deps: ['jquery', 'underscore']
-      },
       '$V_router': {
         deps: ['backbone']
+      },
+      '$V_utils': {
+        deps: ['jquery', 'underscore']
       },
       '$V_baseView': {
         deps: ['$V_utils', '$V_router', 'mixins', 'bootstrap']
@@ -75,6 +73,9 @@ var $V, $, _, Backbone;
       },
       'login_view': {
         deps: ['main_view']
+      },
+      'signup_view': {
+        deps: ['$V_baseView']
       }
     },
     waitSeconds: 30
@@ -90,13 +91,15 @@ var $V, $, _, Backbone;
     '$V_baseView',
     'main_view',
     'home_view',
-    'login_view'
+    'login_view',
+    'signup_view'
   ];
 
   $V.resourcesText = [
     'text!' + $V.templates.route + 'tmpl_main.html',
     'text!' + $V.templates.route + 'tmpl_home.html',
-    'text!' + $V.templates.route + 'tmpl_login.html'
+    'text!' + $V.templates.route + 'tmpl_login.html',
+    'text!' + $V.templates.route + 'tmpl_signup.html'
   ];
 
 

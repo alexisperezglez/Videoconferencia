@@ -1,9 +1,35 @@
 <script type="text/template" id="tmpl_home">
-  <div id="home_view">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a volutpat ligula. Proin sed nisi tempor, porta felis quis, condimentum ante. Mauris consequat tempus libero ut tincidunt. Integer porttitor finibus lacus in venenatis. Ut sem augue, scelerisque scelerisque ligula et, dignissim lobortis erat. Vestibulum a sagittis dolor, sed hendrerit nibh. Morbi viverra lobortis ligula tempor eleifend. Proin nulla augue, dapibus sed ipsum a, ultrices auctor massa. Curabitur a viverra turpis. Nam nec metus justo. Aliquam euismod imperdiet risus.</p>
+  <div id="home_view" class="container">
+    {{ _.tmpl('#tmpl_navBar', {}) }}
+    <div id="page-container" class="row">
+      <div id="main-container" class="col-md-9"></div>
+      <div id="side-container"class="col-md-3"></div>
+    <div>
+  </div>
+</script>
 
-    <p>Donec eros sem, porta vitae accumsan eget, dapibus pharetra mauris. Nullam tristique, odio ac porttitor commodo, dui neque faucibus nunc, ac blandit urna eros non ex. Nam mattis fermentum dolor sed pretium. Morbi nisl nulla, malesuada vel odio vitae, imperdiet aliquet libero. Morbi suscipit elit dolor, id laoreet ligula luctus vitae. Vivamus laoreet ligula id ultrices rhoncus. Sed accumsan cursus ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus maximus condimentum magna a pellentesque.</p>
+<script type="text/template" id="tmpl_navBar">
+<nav  id="navbar"class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">VideoConferencia</a>
+    </div>
 
-    <p>Vivamus rutrum hendrerit urna, quis mollis leo dictum sit amet. Phasellus et nulla felis. Morbi a placerat ligula, quis efficitur tellus. Curabitur fermentum enim non elit fermentum pretium nec in ligula. Duis placerat finibus blandit. Praesent id nisi et quam bibendum mollis et iaculis mauris. Duis at porttitor leo, quis scelerisque ex. Sed placerat placerat arcu et tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus vitae nulla imperdiet, eleifend velit non, sagittis est. Etiam nec nisi neque. Quisque consequat odio ut sodales maximus. Ut rhoncus, arcu vel malesuada elementum, turpis justo congue ipsum, vitae commodo enim massa id magna.</p>
-  <div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Perfil</a></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="" data-desconectar>Desconectar</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 </script>

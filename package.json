@@ -1,11 +1,14 @@
 {
     "name": "videoconferencia",
     "description": "Aplicacion de videoconferencia sobre HTML5",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "private": true,
     "dependencies": {
         "express": "3.x",
-        "mongodb": "1.1.8",
-        "socket.io": "0.9.10"
+        "mongoose": "3.8.15",
+        "underscore": "1.7.0",
+        "socket.io": "0.9.10",
+        "bcrypt-nodejs": "0.0.3",
+        "hbs": "~2.4.0"
     }
 }
