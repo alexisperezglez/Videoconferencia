@@ -1,31 +1,67 @@
-window.login_view = Backbone.View.extend({
-
+$V.LoginView = $V.baseView.extend({
+  tmpl: '#tmpl_login',
   events: {
-    'submit .login_view_form': 'saveUser'
+    'submit #login-form': 'signIn'
   },
 
-  saveUser: function (ev) {
+  afterInitialize: function () {
+    this.model = new $V.BaseViewModel();
+  },
+
+  signIn: function (ev) {
+    ev.preventDefault();
+    ev.stopPropagation()
     var $form = $(ev.currentTarget),
-    	userDetails = JSON.parse({
-    		username: this.$('#username'),
-    		email: this.$('email')
-    	}),
-    	user = new User();
+      $validationContainer = this.$('#validationContainer'),
+      userData = {};
 
-    user.save(userDetails, {
-      success: function (user) {
-        router.navigate('', {trigger:true});
-      }
+    $validationContainer.addClass('hidden');
+    userData = _.serializeForm($form);
+
+    _.cleanErrorValidations($form);
+    validationErrors = _.validateNotBlank(userData);
+    if (!_.isEmpty(validationErrors)) {
+      _.markValidationErrors($form, validationErrors);
+    } else {
+      this.onSignIn(JSON.stringify(userData), this.successCallback, this.errorCallback);
+    }
+  },
+
+  onSignIn: function (data, success, error) {
+    $.ajax({
+      url: 'api/auth',
+      contentType: 'application/json',
+      dataType: 'json',
+      type: 'POST',
+      beforeSend: this.beforeSendRequest,
+      data: data,
+      success: success,
+      error: error
     });
-    return false;
   },
 
-  initialize:function () {
-    this.render();
+  beforeSendRequest: function (xhr) {
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    
+    if (csrfToken) {
+      xhr.setRequestHeader('X-CSRF-Token', csrfToken);
+    }
   },
 
-  render:function () {
-    $(this.el).html(this.template());
-    return this;
-  }
+  successCallback: function (data) {
+    var status = data.status,
+      $validationContainer = $('#validationContainer');;
+
+    if (status === 'OK') {
+      $V.app_router.navigate('home', {trigger: true});
+    } else {
+      $.when(
+        $validationContainer.find('#validationMessage').html(data.message)
+      ).then(
+        $validationContainer.removeClass('hidden')
+      );
+    }
+  },
+
+  errorCallback: function (data) {}
 });
