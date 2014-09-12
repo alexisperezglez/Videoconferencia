@@ -20,14 +20,17 @@
       </button>
       <a class="navbar-brand" href="#">VideoConferencia</a>
     </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Perfil</a></li>
-      </ul>
-      
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="" data-desconectar>Desconectar</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Perfil</a></li>
+            <li><a href="#">Información</a></li>
+            <li class="divider"></li>
+            <li><a href="" data-desconectar>Desconectar</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

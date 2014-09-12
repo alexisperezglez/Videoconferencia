@@ -3,9 +3,9 @@ require('./bbdd')
 var express = require('express'),
   https = require('https'),
   fs = require('fs'),
-	path = require('path'),
+  path = require('path'),
   config = require('./config'),
-	users = require('./routes/users'),
+  users = require('./api/user'),
   auth = require ('./api/auth');
 
  
@@ -51,6 +51,8 @@ app.post('/api/auth', auth.signIn);
 app.post('/api/auth/signup', auth.signUp);
 
 app.post('/api/auth/logout', auth.logOut);
+
+app.get('/api/user', users.getUserInfo);
 
 
 app.get('/users', users.getUsers);

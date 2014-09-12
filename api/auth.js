@@ -18,7 +18,7 @@ exports.getAuth = function (req, res) {
 }
 
 exports.signIn = function (req, res) {
-  User.findOne({ username: req.body.username }).lean().exec( function (err, user) {
+  User.findOne({ username: req.body.username }).lean().exec(function (err, user) {
     if (user) {
       if( bcrypt.compareSync( req.body.password, user.hash )){
         res.cookie('user_id', user._id, { signed: true, maxAge: config.cookieMaxAge });
@@ -42,7 +42,7 @@ exports.signUp = function (req, res) {
       if (err) {
         res.json({ user: {}, logado: false, message: 'Nombre de usuario existente, elija otro por favor', status:'KO' });
       } else {
-        User.findOne({ username: newUser.username }).lean().exec( function (err2, user) {
+        User.findOne({ username: newUser.username }).lean().exec(function (err2, user) {
           res.cookie('user_id', user._id, { signed: true, maxAge: config.cookieMaxAge });
           res.cookie('auth_token', user.hash, { signed: true, maxAge: config.cookieMaxAge });
           res.json({ user: _.omit(user, ['hash', '__v']), logado: true, message: 'Usuario dado de alta con éxito', status: 'OK' });
