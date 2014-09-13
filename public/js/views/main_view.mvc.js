@@ -29,7 +29,7 @@
         $V.views.homeView = new $V.HomeView({
           el: $('#page-content')
         });
-        $V.views.homeView.render();
+        $V.views.homeView.initialize();
       } else {
         $V.views.loginView = new $V.LoginView({
           el: $('#page-content')

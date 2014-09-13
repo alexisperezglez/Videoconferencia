@@ -2,8 +2,12 @@
   <div id="home_view" class="container">
     {{ _.tmpl('#tmpl_navBar', {}) }}
     <div id="page-container" class="row">
-      <div id="main-container" class="col-md-9"></div>
-      <div id="side-container"class="col-md-3"></div>
+      <div id="main-container" class="col-md-9">
+        {{ _.tmpl('#tmpl_videochat', {user: user}) }}
+      </div>
+      <div id="side-container"class="col-md-3">
+        {{ _.tmpl('#tmpl_contacts', {contacts: contacts}) }}
+      </div>
     <div>
   </div>
 </script>
@@ -18,21 +22,60 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">VideoConferencia</a>
+      <a class="navbar-brand" href="#home">VideoConferencia</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Configuración<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Información</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Información</a></li>
             <li class="divider"></li>
-            <li><a href="" data-desconectar>Desconectar</a></li>
+            <li><a href="" data-desconectar><span class="glyphicon glyphicon-log-out"></span> Desconectar</a></li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+</script>
+
+<script type="text/template" id="tmpl_videochat">
+  <div id="videochat_view">
+    <header>
+      <h1>Bienvenido {{ user.username }},</h1>
+      <h2><small>Selecciona un contacto de la lista para hacer una videollamada</small></h2>
+    </header>
+    <section>
+      <div class="media">
+        <video id= "remoteVideo" class="media-object remote hidden" autoplay></video>
+        <video id="localVideo" class="media-object local" autoplay></video>
+      </div>
+    </section>
+  </div>
+</script>
+
+<script type="text/template" id="tmpl_contacts">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">¿A quién quieres llamar?</h3>
+  </div>
+  <div class="panel-body">
+    [[ if (contacts.length !== 0) { ]]
+      <ul class="list-group">
+        [[ _.each(contacts, function (contact) { ]]
+          <li class="list-group-item list-group-item-warning" data-user="{{ contact.id }}" >{{ contact.name }}<div class="status pull-right {{ $V.utils.getUserState(contact.state) }}"></div></li>
+        [[ }); ]]
+      </ul>
+    [[ } else { ]]
+      <div class="noContacts">
+        <p>Agrega a tus amigos para poder hacer videollamadas</p>
+      </div>
+    [[ } ]]
+  </div>
+</div>
+<div class="hidden" id="finishContainer">
+  <button id="finishCall" type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-stop"></span> Finalizar llamada</button>
+</div>
 </script>

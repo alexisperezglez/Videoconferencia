@@ -1,0 +1,26 @@
+{
+  "contacts": [
+    {
+      "id": "sdlfm-sdflsdmfslkdfj",
+      "name": "user1",
+      "state": 0
+    }, {
+      "id": "sdlfm-sdflsdmfslkdasdasd",
+      "name": "user2",
+      "state": 2
+    }, {
+      "id": "sdlfm-sdflsdsfmfslkdasdasd",
+      "name": "user3",
+      "state": 1
+    }
+  ],
+  "logado": true,
+  "message": "Información recuperada con éxito",
+  "status": "OK",
+  "user": {
+    "_id": "54140d6a6400273e765d0b86",
+    "email": "mock.user@email.com",
+    "state": 0,
+    "username": "Mock"
+  }
+}

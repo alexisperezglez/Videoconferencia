@@ -13,30 +13,11 @@
         this.afterInitialize();
       }
     },
+    
     navigate: function (ev) {
       $V.utils.navigate(ev);
     },
-    loadPage: function (options) {
-      var self = this;
-      this.model.fetch({
-        beforeSend: options,
-        success: function (model, resp) {
-          if (_.isFunction(self.onSuccess)) {
-            self.onSuccess();
-          } else {
-            self.pageLoaded();
-          }
-        },
-        error: function (model, resp) {
-          if (_.isFunction(self.onError)) {
-            self.onError();
-          } 
-        }
-      });
-    },
-    pageLoaded: function () {
-      this.render();
-    },
+
     render: function () {
       if (_.isFunction(this.beforeRender)) {
         this.beforeRender();

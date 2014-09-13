@@ -35,7 +35,7 @@ exports.getUserInfo = function (req, res) {
     }
     _.each(users, function (user) {
       if (user._id != req.signedCookies.user_id) {
-        contactList.push({ name: user.username, state: user.state });
+        contactList.push({ id: user._id, name: user.username, state: user.state });
       } else {
         userInfo = _.omit(user, ['hash', '__v']);
       }

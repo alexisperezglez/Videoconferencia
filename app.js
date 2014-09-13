@@ -6,25 +6,27 @@ var express = require('express'),
   path = require('path'),
   config = require('./config'),
   users = require('./api/user'),
-  auth = require ('./api/auth');
+  auth = require ('./api/auth'),
 
- 
-var app = express();
+  sslOptions = {
+    key: fs.readFileSync('./ssl/server.key'),
+    cert: fs.readFileSync('./ssl/server.crt'),
+    ca: fs.readFileSync('./ssl/ca.crt'),
+    requestCert: true,
+    rejectUnauthorized: false
+  },
 
-var sslOptions = {
-  key: fs.readFileSync('./ssl/server.key'),
-  cert: fs.readFileSync('./ssl/server.crt'),
-  ca: fs.readFileSync('./ssl/ca.crt'),
-  requestCert: true,
-  rejectUnauthorized: false
-};
+  app = express();
 
+/******************************/
+/* Configuración del servidor */
+/******************************/
 app.configure(function () {
   app.set('port', process.env.PORT || config.port);
-  app.use(express.logger('dev')); 
+  app.use(express.logger('dev'));
   app.use(express.bodyParser());
-  app.use( express.cookieParser( config.cookieSecret ) );           // populates req.signedCookies
-  app.use( express.cookieSession( config.sessionSecret ) );         // populates req.session, needed for CSRF
+  app.use( express.cookieParser( config.cookieSecret ) );
+  app.use( express.cookieSession( config.sessionSecret ) );
 
   app.set('view engine', 'html');
   app.set('views', __dirname + '/views' );
@@ -52,18 +54,25 @@ app.post('/api/auth/signup', auth.signUp);
 
 app.post('/api/auth/logout', auth.logOut);
 
-app.get('/api/user', users.getUserInfo);
+app.get('/api/home', users.getUserInfo);
 
 
 app.get('/users', users.getUsers);
 app.get('/users/deleteall', users.deleteAll);
 
-/*app.get('/users/:id', users.getUserById);
-app.post('/users', users.addUser);
-app.put('/users/:id', users.updateUser);
-app.delete('/users/:id', users.deleteUser);*/
+/**********************************/
+/* Peticiones con datos de prueba */
+/**********************************/
+app.get('/mock/home', function (req, res) {
+  fs.readFile('./mocks/homeModel.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    res.send(JSON.parse(data));
+  });
+});
 
-
+/**********************************/
+/* Arranque de los servidores     */
+/**********************************/
 app.listen(app.get('port'));
 
 var secureServer = https.createServer(sslOptions,app).listen(config.sslPort, function(){

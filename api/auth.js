@@ -21,6 +21,7 @@ exports.signIn = function (req, res) {
   User.findOne({ username: req.body.username }).lean().exec(function (err, user) {
     if (user) {
       if( bcrypt.compareSync( req.body.password, user.hash )){
+        User.findOneAndUpdate({ _id: user._id }, { state : 0 });
         res.cookie('user_id', user._id, { signed: true, maxAge: config.cookieMaxAge });
         res.cookie('auth_token', user.hash, { signed: true, maxAge: config.cookieMaxAge });
         res.json({ user: _.omit(user, ['hash', '__v']), logado: true, message: 'Usuario logado con éxito', status: 'OK' });
@@ -52,6 +53,7 @@ exports.signUp = function (req, res) {
 }
 
 exports.logOut = function (req, res) {
+  User.findOneAndUpdate({ _id: req.signedCookies.user_id }, { state : 1 });
   res.clearCookie('user_id');
   res.clearCookie('auth_token');
   res.redirect('/');

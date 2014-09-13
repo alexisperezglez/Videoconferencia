@@ -1,9 +1,10 @@
 (function() {
   $V.AppRouter = Backbone.Router.extend({
     routes: {
-      'login': 'defaultRoute',
-      'home': 'defaultRoute',
-      'signup': 'signUp'
+      '' : 'defaultRoute',
+      'login' : 'defaultRoute',
+      'home' : 'defaultRoute',
+      'signup' : 'signUp'
     },
 
 

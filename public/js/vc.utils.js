@@ -39,6 +39,13 @@
     ];
 
     return states[state];
+  };
+
+  $V.utils.getUserMedia = function (successCallback, errorCallback) {
+    var constraints = {audio: true, video: true};
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    navigator.getUserMedia(constraints, successCallback, errorCallback);
   }
   
 })();

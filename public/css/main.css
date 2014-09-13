@@ -6,9 +6,25 @@ body {
   background-color: orange;
 }
 
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #FF6600;
+}
+
+.navbar-nav > li > .dropdown-menu {
+  background-color: #FFDEAD;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: orange;
+}
+
+.dropdown-menu .divider {
+  background-color: #996666;
+}
+
 #page-content {
   height: 100%;
-  margin-top: 50px;
+  margin-top: 30px;
   padding-top: 30px;
 }
 
@@ -26,4 +42,66 @@ body {
 
 #login_signUp_view {
   padding-top: 10px;
+}
+
+#home_view .media-object {
+  display: block;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#home_view .panel {
+  margin-top: 80px;
+}
+
+#home_view .panel .panel-body {
+  padding: 0;
+}
+
+#home_view .panel .panel-body .noContacts {
+  padding: 20px;
+}
+
+#home_view .panel .panel-body .noContacts p{
+  text-align: center;
+}
+
+#home_view .panel .panel-body .list-group {
+  margin-bottom: 0;
+}
+
+#home_view .panel .panel-body li.list-group-item-warning:hover{
+  cursor: pointer;
+  background-color: #faf2cc;
+}
+
+div.status.online{
+  background: #00CC00;
+   border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  width: 1em; 
+  height: 1em;
+  margin-top: 0.2em;
+}
+
+div.status.offline{
+  background: #CCCCCC;
+   border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  width: 1em; 
+  height: 1em;
+  margin-top: 0.2em;
+}
+
+div.status.busy{
+  background: #CC0000;
+   border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+  width: 1em; 
+  height: 1em;
+  margin-top: 0.2em;
 }
