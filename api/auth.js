@@ -14,7 +14,6 @@ exports.getAuth = function (req, res) {
         console.log(user);
       });
       res.json({ user: _.omit(user, ['hash', '__v']), logado: true, message: 'Usuario logado'});
-}
     } else {
       res.json({ user: {}, message: 'Usuario nuevo', logado: false });
     }

@@ -65,7 +65,7 @@
     [[ if (contacts.length !== 0) { ]]
       <ul class="list-group">
         [[ _.each(contacts, function (contact) { ]]
-          <li class="list-group-item list-group-item-warning" data-user="{{ contact.id }}" >{{ contact.name }}<div class="status pull-right {{ $V.utils.getUserState(contact.state) }}"></div></li>
+          <li class="list-group-item list-group-item-warning[[ if (contact.state !==0){ ]] disabled[[ } ]]" data-user="{{ contact.id }}" >{{ contact.name }}<div class="status pull-right {{ $V.utils.getUserState(contact.state) }}"></div></li>
         [[ }); ]]
       </ul>
     [[ } else { ]]

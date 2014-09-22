@@ -2,7 +2,7 @@ $V.HomeView = $V.baseView.extend({
   tmpl: '#tmpl_home',
   events: {
     'click [data-desconectar]' : 'logOut',
-    'click [data-user]' : 'tryToPerformCall',
+    'click [data-user]:not(".disabled")' : 'tryToPerformCall',
     'click #finishCall' : 'finishCall'
   },
 

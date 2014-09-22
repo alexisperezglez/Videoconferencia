@@ -76,6 +76,11 @@ body {
   background-color: #faf2cc;
 }
 
+#home_view .panel .panel-body li.list-group-item-warning.disabled:hover{
+  cursor: default;
+  background-color: #eee;
+}
+
 div.status.online{
   background: #00CC00;
    border-radius: 0.5em;
