@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
   userSchema = new Schema({
     username: { type: String,  required: true, unique: true },
     email: String,
-    hash: String
+    hash: String,
+    state: { type: Number, default: 0 } // 0: online, 1: offline, 2: busy
   });
 
   userSchema.pre("save", function(next) {

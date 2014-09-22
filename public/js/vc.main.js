@@ -1,4 +1,4 @@
-var $V, $, _, Backbone;
+var $V, $, _, Backbone, io;
 (function() {
 
 	$V = {
@@ -14,6 +14,7 @@ var $V, $, _, Backbone;
         backbone: '1.1.2',
         requireText: '2.0.12',
         bootstrap: '3.2.0',
+        socketio: '1.1.0'
       }
     },
     templates: {
@@ -32,6 +33,8 @@ var $V, $, _, Backbone;
       'underscore': $V.jsLibs.route + 'underscore-' + $V.jsLibs.versions.underscore,
       'backbone': $V.jsLibs.route + 'backbone-' + $V.jsLibs.versions.backbone,
       'bootstrap': $V.jsLibs.route + 'bootstrap-' + $V.jsLibs.versions.bootstrap,
+      'socketio': '../socket.io/socket.io',
+      'adapter_webrtc': $V.jsLibs.route + 'adapter.webrtc',
       'mixins': 'vc.mixins',
       '$V_utils': 'vc.utils',
       '$V_router': 'vc.router',
@@ -42,6 +45,10 @@ var $V, $, _, Backbone;
       'signup_view': 'views/signup_view.mvc'
     },
     shim: {
+      'socketio': {
+        deps: [],
+        exports: 'io'
+      },
       'underscore': {
         deps: [],
         exports: '_'
@@ -56,11 +63,14 @@ var $V, $, _, Backbone;
       'mixins': {
         deps: ['jquery', 'underscore']
       },
+      'adapter_webrtc': {
+        deps: []
+      },
       '$V_router': {
         deps: ['backbone']
       },
       '$V_utils': {
-        deps: ['jquery', 'underscore']
+        deps: ['jquery', 'underscore', 'adapter_webrtc']
       },
       '$V_baseView': {
         deps: ['$V_utils', '$V_router', 'mixins', 'bootstrap']
@@ -85,6 +95,8 @@ var $V, $, _, Backbone;
     'jquery',
     'underscore',
     'backbone',
+    'socketio',
+    'adapter_webrtc',
     'mixins',
     '$V_utils',
     '$V_router',
@@ -116,6 +128,7 @@ var $V, $, _, Backbone;
     $ = arguments[0];
     _ = arguments[1];
     Backbone = arguments[2];
+    io = arguments[3];
     for (i = 5; i < l; i += 1) {
       if (typeof arguments[i] === 'string') {
         templates += arguments[i];

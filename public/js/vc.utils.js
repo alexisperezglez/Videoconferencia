@@ -17,5 +17,35 @@
       view[type] = _.extend(view[type], view.coreEvents);
     }
   };
+
+  $V.utils.performHttpRequest = function (view) {
+    $.ajax({
+      url: view.postUrl,
+      contentType: 'application/json',
+      dataType: 'json',
+      type: view.postMethod,
+      beforeSend: view.beforeSendRequest,
+      data: view.model,
+      success: view.onSuccess,
+      error: view.onError
+    });
+  };
+
+  $V.utils.getUserState = function (state) {
+    var states= [
+      'online',
+      'offline',
+      'busy'
+    ];
+
+    return states[state];
+  };
+
+  $V.utils.getUserMedia = function (successCallback, errorCallback) {
+    var constraints = {audio: true, video: true};
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    navigator.getUserMedia(constraints, successCallback, errorCallback);
+  }
   
 })();
