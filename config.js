@@ -4,5 +4,5 @@ module.exports = {
   mongoUrl: 'mongodb://localhost/mongo',
   sessionSecret: 'videoconferencia-secret',
   cookieSecret: 'videoconferencia-secret',
-  cookieMaxAge: (10 * 24 * 3600 * 1000)  //10 días
+  cookieMaxAge: (1 * 24 * 3600 * 1000)  //1 día
 };
