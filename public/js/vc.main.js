@@ -2,9 +2,9 @@ var $V, $, _, Backbone, io;
 (function() {
 
 	$V = {
-    appName: 'Videoconferencia',
+    appName: 'VideoConferencia',
     appTitle: 'Videoconferencia sobre HTML5',
-    version: '1.0.0',
+    version: '2.0.0',
     templatesReady: false,
     jsLibs: {
       route: 'libs/',
@@ -19,9 +19,6 @@ var $V, $, _, Backbone, io;
     },
     templates: {
       route: '../tmpl/'
-    },
-    images: {
-      route: '../img/'
     },
     views: {}
   };
